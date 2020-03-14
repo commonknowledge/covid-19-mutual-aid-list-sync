@@ -5,5 +5,17 @@
   "main": "index.js",
   "repository": "git@github.com:commonknowledge/covid-19-mutual-aid-list-sync.git",
   "author": "Common Knowledge <hello@commoknowledge.coop>",
-  "license": "AGPL"
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "airtable": "^0.8.1",
+    "cheerio": "^1.0.0-rc.3",
+    "lodash": "^4.17.15",
+    "neat-csv": "^5.2.0",
+    "node-fetch": "^2.6.0",
+    "normalize-url": "^5.0.0"
+  }
 }

@@ -1,0 +1,113 @@
+const fetch = require("node-fetch");
+const base = require("airtable").base("appo0BT91w2rrr856");
+const neatCsv = require("neat-csv");
+const _ = require("lodash/fp");
+const fs = require("fs");
+const normalizeUrlL = require("normalize-url");
+
+const NATIONAL_LIST =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSFFG0ByJlzWLBVZ_-sYdhGLvMCCrbb_Fe9sA9LZ_Y_BFoq1BVEFGLf4t--pJ8gg73o0ULvqYlqdk/pub?gid=1451634215&single=true&output=csv";
+
+const normaliseUrl = href => {
+  return toWWWFacebook(
+    toFacebookDesktop(
+      normalizeUrlL(href, {
+        forceHttps: true,
+        stripHash: true,
+        stripWWW: false,
+        removeQueryParameters: [/(.*?)/],
+        removeTrailingSlash: true
+      })
+    )
+  );
+};
+
+const chunkForAirtable = _.chunk(10);
+
+const toFacebookDesktop = href =>
+  href.replace("https://m.facebook.com/", "https://www.facebook.com/");
+
+const toWWWFacebook = href =>
+  href.replace("https://facebook.com/", "https://www.facebook.com/");
+
+const removeSearchFromUrls = _.map(normaliseUrl);
+
+(async () => {
+  const groupsFromAirtable = [];
+
+  await base("COVID-19 UK Mutual Aid Groups")
+    .select({
+      view: "All Groups"
+    })
+    .eachPage((records, fetchNextPage) => {
+      records.forEach(function(record) {
+        groupsFromAirtable.push({
+          id: record.id,
+          name: record.get("Name"),
+          location: record.get("Location"),
+          url: normaliseUrl(record.get("Facebook Group"))
+        });
+      });
+      fetchNextPage();
+    });
+
+  const response = await fetch(NATIONAL_LIST);
+  const contents = await response.text();
+
+  const parsedCsv = await neatCsv(contents);
+
+  const groupsFromCsv = parsedCsv.map(line => {
+    return {
+      name: line["Group name"],
+      location: line.Location,
+      url: normaliseUrl(
+        line["Facebook group/website (Link/URL) Please only provide one link"]
+      )
+    };
+  });
+  const notFoundInGroupsList = [];
+
+  groupsFromAirtable.forEach(groupFromAirtable => {
+    if (!groupsFromCsv.find(group => group.url === groupFromAirtable.url)) {
+      notFoundInGroupsList.push(groupFromAirtable);
+    }
+  });
+
+  console.log(
+    `${notFoundInGroupsList.length} groups not found in national groups list found in Airtable list`
+  );
+
+  if (notFoundInGroupsList.length > 0) {
+    console.log(notFoundInGroupsList);
+  }
+
+  const notFoundInAirtableList = [];
+
+  groupsFromCsv.forEach(groupFromCsv => {
+    if (!groupsFromAirtable.find(group => group.url === groupFromCsv.url)) {
+      notFoundInAirtableList.push(groupFromCsv);
+    }
+  });
+
+  console.log(`${groupsFromCsv.length} found in national group list`);
+  console.log(`${groupsFromAirtable.length} in Airtable`);
+  console.log(
+    `${notFoundInAirtableList.length} groups not found in Airtable list but in national groups list`
+  );
+
+  const asAirtableArray = notFoundInAirtableList.map(group => ({
+    fields: {
+      Name: group.name.trim(),
+      Location: group.location,
+      "Facebook Group": group.url,
+      "Included in Covid-19 Mutual Aid - UK": true
+    }
+  }));
+
+  const chunkedForAirtable = chunkForAirtable(asAirtableArray);
+
+  chunkedForAirtable.forEach(async chunk => {
+    const results = await base("COVID-19 UK Mutual Aid Groups").create(chunk);
+    console.log(`Wrote ${results.length} records to Airtable`);
+  });
+})();
