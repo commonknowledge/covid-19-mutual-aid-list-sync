@@ -77,10 +77,6 @@ const removeSearchFromUrls = _.map(normaliseUrl);
     `${notFoundInGroupsList.length} groups not found in national groups list found in Airtable list`
   );
 
-  if (notFoundInGroupsList.length > 0) {
-    console.log(notFoundInGroupsList);
-  }
-
   const notFoundInAirtableList = [];
 
   groupsFromCsv.forEach(groupFromCsv => {
