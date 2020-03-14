@@ -1,0 +1,9 @@
+{
+  "name": "covid-19-mutual-aid-list-sync",
+  "version": "0.0.1",
+  "description": "Syncs the different lists of UK based COVID-19 Mutual Aid groups",
+  "main": "index.js",
+  "repository": "git@github.com:commonknowledge/covid-19-mutual-aid-list-sync.git",
+  "author": "Common Knowledge <hello@commoknowledge.coop>",
+  "license": "AGPL"
+}
