@@ -1,15 +1,17 @@
 const fs = require("fs");
 const fetch = require("node-fetch");
 const neatCsv = require("neat-csv");
-const { map, chunk } = require("lodash/fp");
+const { map } = require("lodash/fp");
 
-const { airtableDatabase, getGroupsFromAirtable } = require("./src/airtable");
+const {
+  airtableDatabase,
+  getGroupsFromAirtable,
+  chunkForAirtable
+} = require("./src/airtable");
 const { normaliseUrl } = require("./src/urls");
 
 const NATIONAL_LIST =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSFFG0ByJlzWLBVZ_-sYdhGLvMCCrbb_Fe9sA9LZ_Y_BFoq1BVEFGLf4t--pJ8gg73o0ULvqYlqdk/pub?gid=1451634215&single=true&output=csv";
-
-const chunkForAirtable = chunk(10);
 
 const removeSearchFromUrls = map(normaliseUrl);
 
