@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const neatCsv = require("neat-csv");
 const { map, chunk } = require("lodash/fp");
 
-const { base, getGroupsFromAirtable } = require("./src/airtable");
+const { airTableDatabase, getGroupsFromAirtable } = require("./src/airtable");
 const { normaliseUrl } = require("./src/urls");
 
 const NATIONAL_LIST =
@@ -68,7 +68,9 @@ const removeSearchFromUrls = map(normaliseUrl);
   const chunkedForAirtable = chunkForAirtable(asAirtableArray);
 
   chunkedForAirtable.forEach(async chunk => {
-    const results = await base("COVID-19 UK Mutual Aid Groups").create(chunk);
+    const results = await airTableDatabase(
+      "COVID-19 UK Mutual Aid Groups"
+    ).create(chunk);
     console.log(`Wrote ${results.length} records to Airtable`);
   });
 })();
