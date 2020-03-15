@@ -1,8 +1,9 @@
+const fs = require("fs");
 const fetch = require("node-fetch");
-const base = require("airtable").base("appo0BT91w2rrr856");
 const neatCsv = require("neat-csv");
 const { map, chunk } = require("lodash/fp");
-const fs = require("fs");
+
+const { base, getGroupsFromAirtable } = require("./src/airtable");
 const { normaliseUrl } = require("./src/urls");
 
 const NATIONAL_LIST =
@@ -13,23 +14,7 @@ const chunkForAirtable = chunk(10);
 const removeSearchFromUrls = map(normaliseUrl);
 
 (async () => {
-  const groupsFromAirtable = [];
-
-  await base("COVID-19 UK Mutual Aid Groups")
-    .select({
-      view: "All Groups"
-    })
-    .eachPage((records, fetchNextPage) => {
-      records.forEach(function(record) {
-        groupsFromAirtable.push({
-          id: record.id,
-          name: record.get("Name"),
-          location: record.get("Location"),
-          url: normaliseUrl(record.get("Facebook Group"))
-        });
-      });
-      fetchNextPage();
-    });
+  const groupsFromAirtable = await getGroupsFromAirtable();
 
   const response = await fetch(NATIONAL_LIST);
   const contents = await response.text();
