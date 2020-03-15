@@ -24,6 +24,6 @@ async function getGroupsFromAirtable() {
 }
 
 module.exports = {
-  base,
+  airtableDatabase: base,
   getGroupsFromAirtable
 };
