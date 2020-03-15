@@ -4,6 +4,8 @@ const cheerio = require("cheerio");
 const _ = require("lodash/fp");
 const normalizeUrlL = require("normalize-url");
 
+const { toFacebookDesktop, toWWWFacebook } = require("./src/urls.js");
+
 const base = require("airtable").base("appo0BT91w2rrr856");
 
 const FREEDOM_LIST =
@@ -23,12 +25,6 @@ const nationalLinks = [
 const chunkForAirtable = _.chunk(10);
 
 const dropNational = _.remove(href => nationalLinks.includes(href));
-
-const toFacebookDesktop = href =>
-  href.replace("https://m.facebook.com/", "https://www.facebook.com/");
-
-const toWWWFacebook = href =>
-  href.replace("https://facebook.com/", "https://www.facebook.com/");
 
 const normaliseUrl = href => {
   return toWWWFacebook(

@@ -1,36 +1,16 @@
 const fetch = require("node-fetch");
 const base = require("airtable").base("appo0BT91w2rrr856");
 const neatCsv = require("neat-csv");
-const _ = require("lodash/fp");
+const { map, chunk } = require("lodash/fp");
 const fs = require("fs");
-const normalizeUrlL = require("normalize-url");
+const { normaliseUrl } = require("./src/urls");
 
 const NATIONAL_LIST =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSFFG0ByJlzWLBVZ_-sYdhGLvMCCrbb_Fe9sA9LZ_Y_BFoq1BVEFGLf4t--pJ8gg73o0ULvqYlqdk/pub?gid=1451634215&single=true&output=csv";
 
-const normaliseUrl = href => {
-  return toWWWFacebook(
-    toFacebookDesktop(
-      normalizeUrlL(href, {
-        forceHttps: true,
-        stripHash: true,
-        stripWWW: false,
-        removeQueryParameters: [/(.*?)/],
-        removeTrailingSlash: true
-      })
-    )
-  );
-};
+const chunkForAirtable = chunk(10);
 
-const chunkForAirtable = _.chunk(10);
-
-const toFacebookDesktop = href =>
-  href.replace("https://m.facebook.com/", "https://www.facebook.com/");
-
-const toWWWFacebook = href =>
-  href.replace("https://facebook.com/", "https://www.facebook.com/");
-
-const removeSearchFromUrls = _.map(normaliseUrl);
+const removeSearchFromUrls = map(normaliseUrl);
 
 (async () => {
   const groupsFromAirtable = [];
