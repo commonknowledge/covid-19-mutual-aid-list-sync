@@ -69,6 +69,7 @@ _.filter(() => x > 2, [1, 2, 3]);
 // Creates a function to do this when given a list
 const filterGreaterThan2 = _.filter(x => x > 2);
 
+// Uses it
 const thingsFound = filterGreaterThan2([1, 2, 3]);
 ```
 
