@@ -53,7 +53,7 @@ const removeSearchFromUrls = map(normaliseUrl);
     `${notFoundInAirtableList.length} groups not found in Airtable list but in national groups list`
   );
 
-  const asAirtableArray = notFoundInAirtableList.map(group => ({
+  const airtableWritableArray = notFoundInAirtableList.map(group => ({
     fields: {
       Name: group.name.trim(),
       Location: group.location,
@@ -62,7 +62,7 @@ const removeSearchFromUrls = map(normaliseUrl);
     }
   }));
 
-  const chunkedForAirtable = chunkForAirtable(asAirtableArray);
+  const chunkedForAirtable = chunkForAirtable(airtableWritableArray);
 
   chunkedForAirtable.forEach(async chunk => {
     const results = await airtableDatabase(
