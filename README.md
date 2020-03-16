@@ -22,14 +22,14 @@ This syncs the Covid-19 Mutual Aid - UK spreadsheet with the Common Knowledge Ai
 
 The Airtable was manually updated to ensure everything in the spreadsheet is in the Airtable. After this sync point, the spreadsheet is canonical and the source of truth.
 
-We have shut the Airtable input form down, with a soft direct to the form to add to the spreadsheet.
+We have shut the Airtable input form down, with a soft redirect to the form to add to the spreadsheet.
 
 ### `freedom-to-airtable.js`
 
 This soft-syncs the Freedom list with the Common Knowledge Airtable in both directions
 
 - It finds what is missing from the Freedom list and updates Airtable to mark those which are. Freedom staff can then see a view of this via Airtable and update the list once they've verified the groups.
-- It finds everything on the Freedom list but not in the Airtable. As these are often fewer. The Covid-19 Mutual Aid - UK spreadsheet is canonical, these are printed out in order to be written back manually.
+- It finds everything on the Freedom list but not in the Airtable. As the spreadsheet is canonical, these are printed out in order to be written back manually.
 
 ### Persistantly Running Syncs
 
