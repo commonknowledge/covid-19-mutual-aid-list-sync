@@ -6,7 +6,11 @@
   "author": "Common Knowledge <hello@commoknowledge.coop>",
   "license": "AGPL-3.0-or-later",
   "devDependencies": {
+    "jest": "^25.1.0",
     "prettier": "^1.19.1"
+  },
+  "scripts": {
+    "test": "jest"
   },
   "dependencies": {
     "airtable": "^0.8.1",
