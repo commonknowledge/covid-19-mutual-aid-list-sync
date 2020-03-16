@@ -1,6 +1,6 @@
 # covid-19-mutual-aid-list-sync
 
-Syncs the different lists of UK based COVID-19 Mutual Aid groups.
+Syncs the different lists of UK based COVID-19 Mutual Aid groups. Not especially clever but does the job.
 
 ## Lists
 
