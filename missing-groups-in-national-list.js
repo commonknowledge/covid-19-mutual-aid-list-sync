@@ -9,6 +9,7 @@ const {
   chunkForAirtable
 } = require("./src/airtable");
 const { normaliseUrl } = require("./src/urls");
+const { findMissingGroups } = require("./src/lists");
 
 const NATIONAL_LIST =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSFFG0ByJlzWLBVZ_-sYdhGLvMCCrbb_Fe9sA9LZ_Y_BFoq1BVEFGLf4t--pJ8gg73o0ULvqYlqdk/pub?gid=1451634215&single=true&output=csv";
@@ -32,25 +33,19 @@ const removeSearchFromUrls = map(normaliseUrl);
       )
     };
   });
-  const notFoundInGroupsList = [];
-
-  groupsFromAirtable.forEach(groupFromAirtable => {
-    if (!groupsFromCsv.find(group => group.url === groupFromAirtable.url)) {
-      notFoundInGroupsList.push(groupFromAirtable);
-    }
-  });
+  const notFoundInGroupsList = findMissingGroups(
+    groupsFromAirtable,
+    groupsFromCsv
+  );
 
   console.log(
     `${notFoundInGroupsList.length} groups not found in national groups list found in Airtable list`
   );
 
-  const notFoundInAirtableList = [];
-
-  groupsFromCsv.forEach(groupFromCsv => {
-    if (!groupsFromAirtable.find(group => group.url === groupFromCsv.url)) {
-      notFoundInAirtableList.push(groupFromCsv);
-    }
-  });
+  const notFoundInAirtableList = findMissingGroups(
+    groupsFromCsv,
+    groupsFromAirtable
+  );
 
   console.log(`${groupsFromCsv.length} found in national group list`);
   console.log(`${groupsFromAirtable.length} in Airtable`);
