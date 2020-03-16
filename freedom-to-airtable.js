@@ -99,4 +99,8 @@ async function getFreedomLinks() {
       "COVID-19 UK Mutual Aid Groups"
     ).update(chunk);
   });
+
+  if (notFoundInAirtableButInFreedomList.length > 0) {
+    console.log(notFoundInAirtableButInFreedomList);
+  }
 })();
