@@ -1,4 +1,17 @@
-const { toFacebookDesktop, toWWWFacebook, cleanUrl } = require("../urls");
+const {
+  toFacebookDesktop,
+  normaliseUrl,
+  toWWWFacebook,
+  cleanUrl
+} = require("../urls");
+
+describe("normaliseUrl()", () => {
+  test("works", () => {
+    expect(normaliseUrl("www.example.com/#blah?hello=world")).toEqual(
+      "https://www.example.com"
+    );
+  });
+});
 
 describe("cleanUrl()", () => {
   test("adds protocol", () => {

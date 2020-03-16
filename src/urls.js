@@ -10,7 +10,7 @@ const cleanUrl = url =>
   });
 
 const normaliseUrl = href => {
-  return toWWWFacebook(toFacebookDesktop(cleanUrl));
+  return toWWWFacebook(toFacebookDesktop(cleanUrl(href)));
 };
 
 const toFacebookDesktop = href =>
