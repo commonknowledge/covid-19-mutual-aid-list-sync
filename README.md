@@ -8,9 +8,9 @@ There are currently three lists of UK based COVID-19 Mutual Aid groups.
 
 - [https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/](https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/) maintained by [Freedom](https://freedomnews.org.uk/)
 - [https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit](https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit) Google Spreadsheet maintained by [Covid-19 Mutual Aid - UK](https://www.facebook.com/CovidAidUK/)
-- [https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493](https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493) maintained by us at [Common Knowledge](https://commonknowledge.coop/)
+- [https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493](https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493) maintained by us at [Common Knowledge](https://commonknowledge.coop/) which we have deprecated in favour of the Covid-19 Mutual Aid - UK list.
 
-This software will keep all of them in sync with one another.
+This software will keep all of them in sync with one another. We deprecated our list, but as the link is still out there need to make sure it is kept up to date.
 
 ## Syncs
 
