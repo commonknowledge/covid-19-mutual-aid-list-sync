@@ -1,17 +1,16 @@
 const normalizeUrlLibrary = require("normalize-url");
 
+const cleanUrl = url =>
+  normalizeUrlLibrary(url, {
+    forceHttps: true,
+    stripHash: true,
+    stripWWW: false,
+    removeQueryParameters: [/(.*?)/],
+    removeTrailingSlash: true
+  });
+
 const normaliseUrl = href => {
-  return toWWWFacebook(
-    toFacebookDesktop(
-      normalizeUrlLibrary(href, {
-        forceHttps: true,
-        stripHash: true,
-        stripWWW: false,
-        removeQueryParameters: [/(.*?)/],
-        removeTrailingSlash: true
-      })
-    )
-  );
+  return toWWWFacebook(toFacebookDesktop(cleanUrl));
 };
 
 const toFacebookDesktop = href =>
@@ -21,6 +20,7 @@ const toWWWFacebook = href =>
   href.replace("https://facebook.com/", "https://www.facebook.com/");
 
 module.exports = {
+  cleanUrl,
   normaliseUrl,
   toFacebookDesktop,
   toWWWFacebook
