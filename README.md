@@ -18,11 +18,9 @@ We deprecated our list, but as the link is still out there need to make sure it 
 
 ### `missing-groups-in-national-list.js`
 
-This syncs the Covid-19 Mutual Aid - UK spreadsheet with the Common Knowledge Airtable.
+This syncs the Covid-19 Mutual Aid - UK spreadsheet with the Common Knowledge Airtable. We have deprecated this Airtable, but as it is still being shared, we are going to keep it up to date.
 
-The Airtable was manually updated to ensure everything in the Covid-19 Mutual Aid - UK spreadsheet is in the Airtable.
-
-After this sync point, the Covid-19 Mutual Aid - UK spreadsheet is canonical and the source of truth.
+The Airtable was manually updated to ensure everything in the spreadsheet is in the Airtable. After this sync point, the spreadsheet is canonical and the source of truth.
 
 We have shut the Airtable input form down, with a soft direct to the form to add to the spreadsheet.
 
