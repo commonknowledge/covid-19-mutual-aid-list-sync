@@ -12,14 +12,6 @@ There are currently three lists of UK based COVID-19 Mutual Aid groups.
 
 This software will keep all of them in sync with one another.
 
-## License
-
-This code is licensed under the GNU Affero General Public License.
-
-This is similar the the General Public License but with the addition that if you are [running the code on a server you must distribute the source code alongside](https://www.gnu.org/licenses/why-affero-gpl.html).
-
-Please respect this license as we feel it best reflects the open sharing needed to respond to this crisis. Any modification of this code that is running must be open sourced.
-
 ## Syncs
 
 ### `missing-groups-in-national-list.js`
@@ -48,3 +40,11 @@ For example:
 ```
 while true; do node missing-groups-in-national-list.js; echo "Waiting two minutes..."; echo; sleep 120; done
 ```
+
+## License
+
+This code is licensed under the [GNU Affero General Public License](LICENSE).
+
+This is similar the the General Public License but with the addition that if you are [running the code on a server you must distribute the source code](https://www.gnu.org/licenses/why-affero-gpl.html).
+
+Please respect this license. We feel it best reflects the open sharing needed to respond to this crisis. Any modification of this code that is running on a server must be open sourced.
