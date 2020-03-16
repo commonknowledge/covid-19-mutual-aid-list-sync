@@ -1,14 +1,4 @@
-function findMissingGroups(firstGroupList, secondGroupList) {
-  const groupsInFirstGroupListButNotInSecond = [];
-
-  firstGroupList.forEach(groupFromAirtable => {
-    if (!secondGroupList.find(group => group.url === groupFromAirtable.url)) {
-      groupsInFirstGroupListButNotInSecond.push(groupFromAirtable);
-    }
-  });
-
-  return groupsInFirstGroupListButNotInSecond;
-}
+const { findMissingGroups } = require("../lists");
 
 describe("findMissingGroups()", () => {
   test("lists when equal have no missing groups", () => {
@@ -56,7 +46,7 @@ describe("findMissingGroups()", () => {
     expect(findMissingGroups(firstGroupList, secondGroupList)).toEqual([]);
   });
 
-  test("groups from first group list are found", () => {
+  test("groups from first group list not in second list are found", () => {
     const groupA = {
       name: "Group A",
       location: "Town A",
@@ -67,10 +57,15 @@ describe("findMissingGroups()", () => {
       location: "Town B",
       url: "https://www.facebook.com/groups/0001"
     };
+    const groupC = {
+      name: "Group C",
+      location: "Town C",
+      url: "https://www.facebook.com/groups/0002"
+    };
 
-    const firstGroupList = [groupA, groupB];
+    const firstGroupList = [groupA, groupB, groupC];
 
-    const secondGroupList = [groupA];
+    const secondGroupList = [groupA, groupC];
 
     const missingFromSecondList = findMissingGroups(
       firstGroupList,
