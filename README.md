@@ -8,7 +8,7 @@ There are currently three lists of UK based COVID-19 Mutual Aid groups.
 
 - [https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/](https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/) maintained by [Freedom](https://freedomnews.org.uk/)
 - [https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit](https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit) Google Spreadsheet maintained by [Covid-19 Mutual Aid - UK](https://www.facebook.com/CovidAidUK/)
-- [https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493](https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493) maintained by us at [Common Knowledge](https://commonknowledge.coop/) which we have deprecated in favour of the Covid-19 Mutual Aid - UK list.
+- [https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493](https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493) maintained by us at [Common Knowledge](https://commonknowledge.coop/) which we have deprecated in favour of the Covid-19 Mutual Aid - UK spreadsheet.
 
 This software will keep all of them in sync with one another.
 
@@ -41,6 +41,35 @@ For example:
 
 ```
 while true; do node missing-groups-in-national-list.js; echo "Waiting two minutes..."; echo; sleep 120; done
+```
+
+## Development
+
+### Running Tests
+
+`jest test`
+
+### Development Footguns
+
+This uses the [functional version of Lodash](https://github.com/lodash/lodash/wiki/FP-Guide).
+
+This is to make dealing with long lists and composing functions dealing with lists a little easier.
+
+Instead of this:
+
+```js
+// Instead of this
+_.filter([1, 2, 3], () => x > 2);
+
+// This
+_.filter(() => x > 2, [1, 2, 3]);
+
+// Or this
+
+// Creates a function to do this when given a list
+const filterGreaterThan2 = _.filter(x => x > 2);
+
+const thingsFound = filterGreaterThan2([1, 2, 3]);
 ```
 
 ## License
