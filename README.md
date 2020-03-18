@@ -2,17 +2,30 @@
 
 Syncs the different lists of UK based COVID-19 Mutual Aid groups. Not especially clever but does the job.
 
+This is coded in plain Javascript and requires [Node.js](https://nodejs.org/). 
+
+This was done to hopefully enable use on client web apps as well as servers, as opposed to the more common data language of Python.
+
 ## Lists
 
 There are currently three lists of UK based COVID-19 Mutual Aid groups.
 
-- [https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/](https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/) maintained by [Freedom](https://freedomnews.org.uk/)
-- [https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit](https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit) Google Spreadsheet maintained by [Covid-19 Mutual Aid - UK](https://www.facebook.com/CovidAidUK/)
-- [https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493](https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493) maintained by us at [Common Knowledge](https://commonknowledge.coop/) which we have deprecated in favour of the Covid-19 Mutual Aid - UK spreadsheet.
+- [A flat HTML list](https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/) maintained by [Freedom](https://freedomnews.org.uk/)
+- [Google Spreadsheet](https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit) maintained by [Covid-19 Mutual Aid - UK](https://www.facebook.com/CovidAidUK/). There is [published CSV version](https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSFFG0ByJlzWLBVZ_-sYdhGLvMCCrbb_Fe9sA9LZ_Y_BFoq1BVEFGLf4t--pJ8gg73o0ULvqYlqdk/pub?gid=1451634215&single=true&output=csv)
+- [An Airtable](https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493) maintained by us at [Common Knowledge](https://commonknowledge.coop/). We have deprecated this in favour of the Covid-19 Mutual Aid - UK spreadsheet.
 
 This software will keep all of them in sync with one another.
 
 We deprecated our list, but as the link is still out there need to make sure it is kept up to date.
+
+## Setting up locally
+
+0. Install [Node.js](https://nodejs.org/en/download/)
+1. Clone the code from this repository `git clone https://github.com/commonknowledge/covid-19-mutual-aid-list-sync`.
+2. Enter the directory `cd covid-19-mutual-aid-list-sync`
+3. Install dependencies using `yarn` or `npm install`.
+4. For using syncs that write to Airtable, export the writing key `export AIRTABLE_API_KEY=<Airtable key>`. Common Knowledge have this if you need it.
+5. Run the commands with `node <sync code>`.
 
 ## Syncs
 
