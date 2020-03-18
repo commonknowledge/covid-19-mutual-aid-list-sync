@@ -11,7 +11,7 @@ This was done to hopefully enable use on client web apps as well as servers, as 
 There are currently three lists of UK based COVID-19 Mutual Aid groups.
 
 - [A flat HTML list](https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/) maintained by [Freedom](https://freedomnews.org.uk/)
-- [Google Spreadsheet](https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit) maintained by [Covid-19 Mutual Aid - UK](https://www.facebook.com/CovidAidUK/). There is published CSV version](https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSFFG0ByJlzWLBVZ_-sYdhGLvMCCrbb_Fe9sA9LZ_Y_BFoq1BVEFGLf4t--pJ8gg73o0ULvqYlqdk/pub?gid=1451634215&single=true&output=csv)
+- [Google Spreadsheet](https://docs.google.com/spreadsheets/d/18P898HWbdR5ouW61sAxW_iBl3yiZlgJu0nSmepn6NwM/edit) maintained by [Covid-19 Mutual Aid - UK](https://www.facebook.com/CovidAidUK/). There is [published CSV version](https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSFFG0ByJlzWLBVZ_-sYdhGLvMCCrbb_Fe9sA9LZ_Y_BFoq1BVEFGLf4t--pJ8gg73o0ULvqYlqdk/pub?gid=1451634215&single=true&output=csv)
 - [An Airtable](https://airtable.com/shrNbWr103SAkI7kX/tblFqGvhbICXwl493) maintained by us at [Common Knowledge](https://commonknowledge.coop/). We have deprecated this in favour of the Covid-19 Mutual Aid - UK spreadsheet.
 
 This software will keep all of them in sync with one another.
