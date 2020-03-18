@@ -1,10 +1,9 @@
 const fetch = require("node-fetch");
 const url = require("url");
 const cheerio = require("cheerio");
-const _ = require("lodash/fp");
 const normalizeUrlL = require("normalize-url");
 
-const { filter } = require("lodash/fp");
+const { filter, map } = require("lodash");
 
 const {
   toFacebookDesktop,
@@ -21,7 +20,7 @@ const { findMissingGroups } = require("./src/lists");
 const FREEDOM_LIST =
   "https://freedomnews.org.uk/covid-19-uk-mutual-aid-groups-a-list/";
 
-const removeSearchFromUrl = _.map(normaliseUrl);
+const removeSearchFromUrl = linksList => map(linksList, normaliseUrl);
 
 async function getFreedomLinks() {
   const response = await fetch(FREEDOM_LIST);
@@ -57,9 +56,8 @@ async function getFreedomLinks() {
     groupsFromAirtable
   );
 
-  const groupsInFreedomListAndInAirtable = filter(
-    group => groupsFromFreedom.find(x => group.url === x.url),
-    groupsFromAirtable
+  const groupsInFreedomListAndInAirtable = filter(groupsFromAirtable, group =>
+    groupsFromFreedom.find(x => group.url === x.url)
   );
 
   console.log(`Freedom list has ${groupsFromFreedom.length} groups`);
