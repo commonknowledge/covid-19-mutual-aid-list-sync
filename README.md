@@ -2,6 +2,10 @@
 
 Syncs the different lists of UK based COVID-19 Mutual Aid groups. Not especially clever but does the job.
 
+This is coded in plain Javascript and requires [Node.js](https://nodejs.org/). 
+
+This was done to hopefully enable use on client web apps as well as servers, as opposed to the more common data language of Python.
+
 ## Lists
 
 There are currently three lists of UK based COVID-19 Mutual Aid groups.
