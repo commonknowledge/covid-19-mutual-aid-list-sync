@@ -18,7 +18,7 @@ This software will keep all of them in sync with one another.
 
 We deprecated our list, but as the link is still out there need to make sure it is kept up to date.
 
-## Setting up locally
+## Setting up locally
 
 0. Install [Node.js](https://nodejs.org/en/download/)
 1. Clone the code from this repository `git clone https://github.com/commonknowledge/covid-19-mutual-aid-list-sync`.
