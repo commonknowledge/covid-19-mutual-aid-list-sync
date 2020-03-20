@@ -1,8 +1,8 @@
 const base = require("airtable").base("appo0BT91w2rrr856");
-const { chunk } = require("lodash/fp");
+const { chunk } = require("lodash");
 const { normaliseUrl } = require("./urls");
 
-const chunkForAirtable = chunk(10);
+const chunkForAirtable = airTableRecords => chunk(airTableRecords, 10);
 
 async function getGroupsFromAirtable() {
   const groupsFromAirtable = [];

@@ -2,7 +2,7 @@
 
 Syncs the different lists of UK based COVID-19 Mutual Aid groups. Not especially clever but does the job.
 
-This is coded in plain Javascript and requires [Node.js](https://nodejs.org/). 
+This is coded in plain Javascript and requires [Node.js](https://nodejs.org/).
 
 This was done to hopefully enable use on client web apps as well as servers, as opposed to the more common data language of Python.
 
@@ -22,10 +22,10 @@ We deprecated our list, but as the link is still out there need to make sure it 
 
 0. Install [Node.js](https://nodejs.org/en/download/)
 1. Clone the code from this repository `git clone https://github.com/commonknowledge/covid-19-mutual-aid-list-sync`.
-2. Enter the directory `cd covid-19-mutual-aid-list-sync`
-3. Install dependencies using `yarn` or `npm install`.
-4. For using syncs that write to Airtable, export the writing key `export AIRTABLE_API_KEY=<Airtable key>`. Common Knowledge have this if you need it.
-5. Run the commands with `node <sync code>`.
+1. Enter the directory `cd covid-19-mutual-aid-list-sync`
+1. Install dependencies using `yarn` or `npm install`.
+1. For using syncs that write to Airtable, export the writing key `export AIRTABLE_API_KEY=<Airtable key>`. Common Knowledge have this if you need it.
+1. Run the commands with `node <sync code>`.
 
 ## Syncs
 
@@ -59,30 +59,6 @@ while true; do node missing-groups-in-national-list.js; echo "Waiting two minute
 ### Running Tests
 
 `jest test`
-
-### Development Footguns
-
-This uses the [functional version of Lodash](https://github.com/lodash/lodash/wiki/FP-Guide).
-
-This is to make dealing with long lists and composing functions dealing with lists a little easier.
-
-Instead of this:
-
-```js
-// Instead of this
-_.filter([1, 2, 3], () => x > 2);
-
-// This
-_.filter(() => x > 2, [1, 2, 3]);
-
-// Or this
-
-// Creates a function to do this when given a list
-const filterGreaterThan2 = _.filter(x => x > 2);
-
-// Uses it
-const numbersGreaterThan2 = filterGreaterThan2([1, 2, 3]);
-```
 
 ## License
 

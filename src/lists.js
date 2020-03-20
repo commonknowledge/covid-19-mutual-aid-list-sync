@@ -1,6 +1,7 @@
-const { differenceBy } = require("lodash/fp");
+const { differenceBy } = require("lodash");
 
-const differenceByUrl = differenceBy("url");
+const differenceByUrl = (firstGroupList, secondGroupList) =>
+  differenceBy(firstGroupList, secondGroupList, "url");
 
 const findMissingGroups = (firstGroupList, secondGroupList) =>
   differenceByUrl(firstGroupList, secondGroupList);
